@@ -10,6 +10,8 @@ public class SingleMenuReport
 		int rating; //based on ratio of low cal food
 		HashMap<String, Integer> topWordCount;
 		
+		//TO ADD: other fields
+		
 		public SingleMenuReport(String ID, int r)
 		{
 			storeID = ID;

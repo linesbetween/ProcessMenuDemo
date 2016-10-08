@@ -16,19 +16,17 @@ import com.google.gson.JsonSyntaxException;
 class Sample
 {
 	String name;
-	double price;
 	int calories;
 	//double id //unique primary key 
 	
-	public Sample (String n, double p, int cal)
-	{name = n; p = price; calories = cal;}
+	public Sample (String n,  int cal)
+	{name = n; calories = cal;}
 	
 	//getters setters
 	
 	public void print()
 	{
 		System.out.println("name: " + name);
-		System.out.println("price: " + price);
 		System.out.println("calories: " + calories);
 		System.out.println();
 	}
@@ -47,22 +45,23 @@ public class UnWrap
 		System.out.println("Unwrapping Json to Java Objects \n");
 		Gson g = new Gson();
 		Sample sample;
-		File fin = new File (args);
 		
+		//TO REMOVE input from file
+		File fin = new File (args);		
 		BufferedReader br = new BufferedReader (new FileReader(fin));
 
 		String line = null;
-		while ((line = br.readLine()) != null) 
+		while ((line = br.readLine()) != null) //TO MODIFY:change from file to Json
 		{
 			sample = g.fromJson(line, Sample.class);
 			Process.tempMenu.add(sample);
 		}
 		
-		br.close();
+		br.close();//TO REMOVE
 
 		
-		for (Sample s: Process.tempMenu)
-			s.print();
+		//for (Sample s: Process.tempMenu)
+			//s.print();
 
 	}
 }

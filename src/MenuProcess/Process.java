@@ -16,7 +16,7 @@ public class Process {
 	private static final int GOOD = 5;
 	private static final int NEUTRUAL = 3;
 	private static final int BAD = 1;
-	private static final int HIGHCAL = 400; // TODO: customize from user input
+	private static final int HIGHCAL = 400; // TODO: customize by user input
 	private static final int NUM_KEYWORD = 5;// pick first 5 frequent words
 
 	
@@ -74,7 +74,7 @@ public class Process {
 		}		
 	}
 	
-	
+	//TO MODIFY: from main to someother function.
 	public static void main(String args[]) throws JsonSyntaxException, IOException
 	{
 		tempMenu = new HashSet<Sample>();
@@ -87,7 +87,8 @@ public class Process {
 		keywordCount  = new HashMap <String, Integer>();
 		
 		//Process Json in each file. 
-		for (String s: args)
+		for (String s: args) //TO MODIFY: from args to input Json.
+			
 		{
 			System.out.println("\n\n" + s);
 			UnWrap.json2Java(s);//Json to java
@@ -115,7 +116,7 @@ public class Process {
 		
 		//Wrap all single reports into Json
 		gson = new Gson();
-		jsonStr = gson.toJson(reportCollection);
+		jsonStr = gson.toJson(reportCollection); //TODO: transport the jsonstr 
 		reportCollection.clear();
 		keywordCount.clear();
 		System.out.println("\n\n Json string: ");
