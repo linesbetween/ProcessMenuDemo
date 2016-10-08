@@ -1,0 +1,4 @@
+{"name":"Pizza","price":"16","calories":"555"}
+{"name":"Burger","price":"7","calories":"678"}
+{"name":"Salade","price":"5","calories":"123"}
+{"name":"Cookie","price":"2","calories":"420"}
