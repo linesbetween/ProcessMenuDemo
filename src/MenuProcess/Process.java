@@ -1,4 +1,7 @@
 package MenuProcess;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,11 +23,34 @@ public class Process {
 	private static final int NUM_KEYWORD = 5;// pick first 5 frequent words
 
 	
-	static HashSet<Sample> tempMenu;//temporarily holds menu under processing. 
+	 static HashSet<Sample> tempMenu;//temporarily holds menu under processing. 
 	//forget why use static instead of passing as argument...
-	static HashMap<String, SingleMenuReport> reportCollection; //<store ID, menu items>, all single reports here
+	 static HashMap<String, SingleMenuReport> reportCollection; //<store ID, menu items>, all single reports here
 	
-	static HashMap <String, Integer> keywordCount;//keep count of each word's occurrence in item names
+	 static HashMap <String, Integer> keywordCount;//keep count of each word's occurrence in item names
+	
+	
+	public static void json2Java(String args) throws JsonSyntaxException, IOException
+	{
+		System.out.println("Unwrapping Json to Java Objects \n");
+		Gson g = new Gson();
+		Sample sample;
+		
+		//TO REMOVE input from file
+		
+		File fin = new File (args);		
+		BufferedReader br = new BufferedReader (new FileReader(fin));
+
+		String line = null;
+		while ((line = br.readLine()) != null) //TO MODIFY:change from file to Json
+		{
+			sample = g.fromJson(line, Sample.class);
+			Process.tempMenu.add(sample);
+		}
+		
+		br.close();//TO REMOVE
+
+	}
 	
 	//For single menu report. Rate healthiness based on low cal food
 	private static  int rate(HashSet<Sample> menu) 
@@ -91,7 +117,7 @@ public class Process {
 			
 		{
 			System.out.println("\n\n" + s);
-			UnWrap.json2Java(s);//Json to java
+			json2Java(s);//Json to java
 			rating = rate(tempMenu);//get rating
 			countKeyWord(keywordCount);//get word count
 			

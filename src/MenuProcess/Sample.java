@@ -13,7 +13,7 @@ import com.google.gson.JsonSyntaxException;
 /*
  * Sample is one menu item. Sorry for the naming
  */
-class Sample
+public class Sample
 {
 	String name;
 	int calories;
@@ -36,8 +36,8 @@ class Sample
 /*UnWrap Json in file to java object
  *Each line in file is a Json of an item/Sample 
  * */
-
-public class UnWrap 
+/*
+public class Sample  
 {
 
 	public static void json2Java(String args) throws JsonSyntaxException, IOException
@@ -47,6 +47,7 @@ public class UnWrap
 		Sample sample;
 		
 		//TO REMOVE input from file
+		
 		File fin = new File (args);		
 		BufferedReader br = new BufferedReader (new FileReader(fin));
 
@@ -64,4 +65,6 @@ public class UnWrap
 			//s.print();
 
 	}
+	
 }
+*/
